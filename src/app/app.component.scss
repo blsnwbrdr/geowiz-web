@@ -24,6 +24,14 @@
   }
 }
 
+@media (min-width: 768px) {
+  .header {
+    .header__h1 {
+      font-size: 5rem;
+    }
+  }
+}
+
 // QUESTIONS
 .questions {
   .questions__flag {
@@ -37,14 +45,6 @@
     max-width: 5rem;
     position: relative;
     transform: translate(-50%, 0px);
-  }
-}
-
-@media (min-width: 768px) {
-  .header {
-    .header__h1 {
-      font-size: 5rem;
-    }
   }
 }
 
@@ -63,7 +63,7 @@
   }
 }
 
-// radioES
+// RADIOS
 .radio {
   width: 100%;
   .radio__input {
@@ -107,6 +107,7 @@
   }
 }
 
+// NAVIGATION (SETTINGS) BAR
 .navbar {
   height: 4rem;
   padding: 0;
@@ -132,6 +133,18 @@
     font-size: 0.75rem;
     .active {
       color: $colorSecondary;
+    }
+  }
+
+  // non-touchscreens
+  @media (hover: hover) {
+    .nav-link {
+      &:hover {
+        color: $colorTertiary;
+        .active {
+          color: $colorTertiary;
+        }
+      }
     }
   }
 }
