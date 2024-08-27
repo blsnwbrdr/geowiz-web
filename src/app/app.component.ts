@@ -16,17 +16,17 @@ import { CountriesService } from './services/countries.service';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  isOverlay: boolean = false;
-  isDisplayQuestion: boolean = true;
-  isActiveCapital: boolean = true;
-  isActiveFlag: boolean = true;
-  isActiveShape: boolean = true;
-  isActiveHardcore: boolean = false;
+  isOverlay = false;
+  isDisplayQuestion = true;
+  isActiveCapital = true;
+  isActiveFlag = true;
+  isActiveShape = true;
+  isActiveHardcore = false;
   errorMessage!: string;
   countries!: ICountry[];
   questionCapital!: string[];
   questionFlag!: string;
-  questionId: string = 'us';
+  questionId = 'us';
   answer!: string;
   response!: string;
 
@@ -82,13 +82,13 @@ export class AppComponent implements OnInit {
       'Tuvalu',
       'United States Minor Outlying Islands',
     ];
-    let group = data.filter((item) => !noImages.includes(item.name.common));
+    const group = data.filter((item) => !noImages.includes(item.name.common));
     return group;
   }
 
   // Filter out countries with no capitals
   capitalFilter(data: ICountry[]): ICountry[] {
-    let group: ICountry[] = [];
+    const group: ICountry[] = [];
     data.forEach((element) => {
       if (element.capital.length !== 0) {
         group.push(element);
@@ -120,7 +120,7 @@ export class AppComponent implements OnInit {
 
   // Get group of 10
   group10(data: ICountry[]): ICountry[] {
-    let group = [];
+    const group = [];
     for (let x = 0; x < 10; x++) {
       group.push(data[x]);
     }

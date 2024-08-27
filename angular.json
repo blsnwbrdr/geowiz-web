@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-project": {
+    "geowiz-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ng-project",
+            "outputPath": "dist/geowiz-web",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -34,7 +34,6 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
-
               "src/styles.scss"
             ],
             "scripts": []
@@ -75,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ng-project:build:production"
+              "buildTarget": "geowiz-web:build:production"
             },
             "development": {
-              "buildTarget": "ng-project:build:development"
+              "buildTarget": "geowiz-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -103,8 +102,17 @@
             "styles": ["src/styles.scss"],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": ["@angular-eslint/schematics"]
   }
 }

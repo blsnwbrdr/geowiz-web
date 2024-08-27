@@ -1,11 +1,13 @@
 {
-  "name": "ng-project",
-  "version": "0.0.0",
+  "name": "geowiz-web",
+  "version": "1.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    "branch-clean-up": "git branch -lvv | cut -c3- | awk '/: gone]/ {print $1}' | xargs git branch -D",
     "build": "ng build --configuration production --base-href /portfolio/geowiz/",
-    "watch": "ng build --watch --configuration development",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "review": "npm run lint && npm run test:headless",
+    "start": "ng serve",
     "test": "ng test",
     "test:headless": "ng test --watch=false --browsers=ChromeHeadless"
   },
@@ -30,12 +32,15 @@
     "@angular/cli": "^18.2.1",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
+    "angular-eslint": "18.3.0",
+    "eslint": "^9.9.0",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.5.2"
+    "typescript": "~5.5.2",
+    "typescript-eslint": "8.1.0"
   }
 }

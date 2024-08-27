@@ -2,10 +2,10 @@ export interface ICountry {
   name: {
     common: string;
     official: string;
-    nativeName: Object;
+    nativeName: object;
   };
   cca2: string;
-  capital: Array<string>;
-  latlng: Array<number>;
-  flag: any;
+  capital: string[];
+  latlng: number[];
+  flag: string;
 }
