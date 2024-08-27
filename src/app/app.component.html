@@ -1,0 +1,109 @@
+<div *ngIf="isOverlay" class="window-overlay">
+  <div class="window-overlay__content">
+    <h2 class="text-center">{{ response }}</h2>
+  </div>
+</div>
+<main class="container">
+  <div class="row header">
+    <div class="col-12">
+      <h1 class="text-center mt-1 header__h1">
+        <span class="text--primary">Geo</span
+        ><span class="text--secondary">Wiz</span>
+      </h1>
+    </div>
+  </div>
+  <div *ngIf="isDisplayQuestion">
+    <div *ngIf="isActiveCapital" class="row questions">
+      <div class="col-12">
+        <p class="text-center">Capital: {{ questionCapital }}</p>
+      </div>
+    </div>
+    <div *ngIf="isActiveFlag || isActiveShape" class="row mb-3 questions">
+      <div
+        *ngIf="isActiveFlag"
+        [ngClass]="[isActiveFlag && isActiveShape ? 'col-6' : 'col-12']"
+      >
+        <div class="questions__flag text-center">{{ questionFlag }}</div>
+      </div>
+      <div
+        *ngIf="isActiveShape"
+        [ngClass]="[isActiveFlag && isActiveShape ? 'col-6' : 'col-12']"
+      >
+        <img
+          src="assets/images/{{ questionId }}/vector.svg"
+          alt="country-shape"
+          class="questions__shape text-center"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="list">
+        <div *ngFor="let country of countries" class="checkbox">
+          <input
+            id="{{ country.name.common }}"
+            class="checkbox__input"
+            name="list_of_countries"
+            type="radio"
+            value="{{ country.name.common }}"
+            (change)="onChange(country.name.common)"
+          />
+          <label class="checkbox__label" for="{{ country.name.common }}">{{
+            country.name.common
+          }}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<div class="navbar navbar-expand navbar--grey fixed-bottom">
+  <div class="container">
+    <ul class="nav navbar-nav nav-fill w-100">
+      <li class="nav-item">
+        <button class="nav-link" (click)="onToggle('capital')">
+          <i
+            class="fas"
+            [ngClass]="[
+              isActiveCapital ? 'fa-toggle-on active' : 'fa-toggle-off'
+            ]"
+          ></i
+          ><br />Capital
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" (click)="onToggle('flag')">
+          <i
+            class="fas"
+            [ngClass]="[isActiveFlag ? 'fa-toggle-on active' : 'fa-toggle-off']"
+          ></i
+          ><br />Flag
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" (click)="onToggle('shape')">
+          <i
+            class="fas"
+            [ngClass]="[
+              isActiveShape ? 'fa-toggle-on active' : 'fa-toggle-off'
+            ]"
+          ></i
+          ><br />Shape
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" (click)="onToggle('hardcore')">
+          <i
+            class="fas"
+            [ngClass]="[
+              isActiveHardcore ? 'fa-toggle-on active' : 'fa-toggle-off'
+            ]"
+          ></i
+          ><br />Hardcore
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<router-outlet />

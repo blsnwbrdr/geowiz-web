@@ -1,0 +1,138 @@
+// PRESET VARIABLES
+@import "../sass/presets";
+
+// WINDOW OVERLAY
+.window-overlay {
+  background-color: white;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  .window-overlay__content {
+    left: 50%;
+    position: absolute;
+    top: 20%;
+    transform: translate(-50%, -20%);
+  }
+}
+
+// HEADER
+.header {
+  .header__h1 {
+    font-family: "Gilroy", Arial, sans-serif;
+    font-size: 3rem;
+  }
+}
+
+// QUESTIONS
+.questions {
+  .questions__flag {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+
+  .questions__shape {
+    left: 50%;
+    max-height: 5rem;
+    max-width: 5rem;
+    position: relative;
+    transform: translate(-50%, 0px);
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    .header__h1 {
+      font-size: 5rem;
+    }
+  }
+}
+
+// LIST COLUMNS
+.list {
+  column-count: 1;
+}
+@media (min-width: 768px) {
+  .list {
+    column-count: 2;
+  }
+}
+@media (min-width: 1024px) {
+  .list {
+    column-count: 3;
+  }
+}
+
+// CHECKBOXES
+.checkbox {
+  width: 100%;
+  .checkbox__input {
+    display: none;
+  }
+  .checkbox__label {
+    background-color: $colorPrimary;
+    border: 0.125rem solid $colorTertiary;
+    border-radius: 0.25rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    padding: 0.1rem;
+    text-align: center;
+    width: 100%;
+    &:hover {
+      background-color: white;
+      color: $colorPrimary;
+      cursor: pointer;
+    }
+  }
+  .checkbox__input:checked ~ .checkbox__label {
+    background-color: white;
+    border-color: $colorTertiary;
+    color: $colorPrimary;
+  }
+}
+
+@media (min-width: 768px) {
+  .checkbox__label {
+    margin-bottom: 1rem;
+  }
+}
+
+// non-touchscreens
+@media (hover: hover) {
+  .checkbox__label {
+    &:hover {
+      background-color: white;
+      color: $colorPrimary;
+      cursor: pointer;
+    }
+  }
+}
+
+.navbar {
+  height: 4rem;
+  padding: 0;
+  &.navbar--grey {
+    background-color: $colorLightGrey;
+    border-top: 0.0625rem solid $colorMediumGrey;
+  }
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .fa,
+  .fas,
+  .far,
+  .fal,
+  .fad,
+  .fab {
+    font-size: 1.25rem;
+  }
+  .nav-link {
+    color: $colorDarkGrey;
+    display: inline-block;
+    font-size: 0.75rem;
+    .active {
+      color: $colorSecondary;
+    }
+  }
+}

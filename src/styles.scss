@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Gilroy|Noto+Sans");
+
+// PRESET VARIABLES
+@import "sass/presets";
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  font-family: "Noto Sans", Arial, sans-serif;
+  color: $colorDarkGrey;
+}
+a {
+  color: $colorDarkGrey;
+  &:hover {
+    color: $colorPrimary;
+  }
+}
+.text--primary {
+  color: $colorPrimary;
+}
+.text--secondary {
+  color: $colorSecondary;
+}
+.text--tertiary {
+  color: $colorTertiary;
+}
+.text--red {
+  color: $colorRed;
+}
