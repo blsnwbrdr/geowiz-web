@@ -40,16 +40,16 @@
   <div class="row">
     <div class="col-12">
       <div class="list">
-        <div *ngFor="let country of countries" class="checkbox">
+        <div *ngFor="let country of countries" class="radio">
           <input
             id="{{ country.name.common }}"
-            class="checkbox__input"
+            class="radio__input"
             name="list_of_countries"
             type="radio"
             value="{{ country.name.common }}"
             (change)="onChange(country.name.common)"
           />
-          <label class="checkbox__label" for="{{ country.name.common }}">{{
+          <label class="radio__label" for="{{ country.name.common }}">{{
             country.name.common
           }}</label>
         </div>
