@@ -1,9 +1,12 @@
+<!-- Window Overlay -->
 <div *ngIf="isOverlay" class="window-overlay">
   <div class="window-overlay__content">
     <h2 class="text-center">{{ response }}</h2>
   </div>
 </div>
+<!-- Main Section -->
 <main class="container">
+  <!-- Header -->
   <div class="row header">
     <div class="col-12">
       <h1 class="text-center mt-1 header__h1">
@@ -12,12 +15,15 @@
       </h1>
     </div>
   </div>
+  <!-- Questions -->
   <div *ngIf="isDisplayQuestion">
+    <!-- Capital -->
     <div *ngIf="isActiveCapital" class="row questions">
       <div class="col-12">
         <p class="text-center">Capital: {{ questionCapital }}</p>
       </div>
     </div>
+    <!-- Flag and Shape -->
     <div *ngIf="isActiveFlag || isActiveShape" class="row mb-3 questions">
       <div
         *ngIf="isActiveFlag"
@@ -37,6 +43,7 @@
       </div>
     </div>
   </div>
+  <!-- List of Available Country Selections -->
   <div class="row">
     <div class="col-12">
       <div class="list">
@@ -57,9 +64,11 @@
     </div>
   </div>
 </main>
+<!-- Bottom Settings Bar -->
 <div class="navbar navbar-expand navbar--grey fixed-bottom">
   <div class="container">
     <ul class="nav navbar-nav nav-fill w-100">
+      <!-- Capital Toggle -->
       <li class="nav-item">
         <button class="nav-link" (click)="onToggle('capital')">
           <i
@@ -71,6 +80,7 @@
           ><br />Capital
         </button>
       </li>
+      <!-- Flag Toggle -->
       <li class="nav-item">
         <button class="nav-link" (click)="onToggle('flag')">
           <i
@@ -80,6 +90,7 @@
           ><br />Flag
         </button>
       </li>
+      <!-- Shape Toggle -->
       <li class="nav-item">
         <button class="nav-link" (click)="onToggle('shape')">
           <i
@@ -91,6 +102,7 @@
           ><br />Shape
         </button>
       </li>
+      <!-- Hardcore Toggle -->
       <li class="nav-item">
         <button class="nav-link" (click)="onToggle('hardcore')">
           <i
