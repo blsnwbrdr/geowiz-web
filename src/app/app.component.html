@@ -10,6 +10,11 @@
   <div class="row header">
     <div class="col-12">
       <h1 class="text-center mt-1 header__h1">
+        <img
+          src="assets/images/geowiz_logo.svg"
+          alt="geowiz logo - drawn outline of earth"
+          class="me-2 header__img"
+        />
         <span class="text--primary">Geo</span
         ><span class="text--secondary">Wiz</span>
       </h1>
@@ -36,7 +41,7 @@
         [ngClass]="[isActiveFlag && isActiveShape ? 'col-6' : 'col-12']"
       >
         <img
-          src="assets/images/{{ questionId }}/vector.svg"
+          src="assets/images/countries/{{ questionId }}/vector.svg"
           alt="country-shape"
           class="questions__shape text-center"
         />

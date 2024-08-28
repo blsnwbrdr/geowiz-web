@@ -23,12 +23,24 @@
     font-size: 3rem;
     font-weight: 300;
   }
+  .header__img {
+    height: 3rem;
+    position: relative;
+    top: -0.33rem;
+    width: 3rem;
+  }
 }
 
 @media (min-width: 768px) {
   .header {
     .header__h1 {
       font-size: 5rem;
+    }
+    .header__img {
+      height: 5rem;
+      position: relative;
+      top: -0.5rem;
+      width: 5rem;
     }
   }
 }
