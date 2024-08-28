@@ -19,8 +19,17 @@
 // HEADER
 .header {
   .header__h1 {
-    font-family: "Gilroy", Arial, sans-serif;
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 3rem;
+    font-weight: 300;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    .header__h1 {
+      font-size: 5rem;
+    }
   }
 }
 
@@ -40,14 +49,6 @@
   }
 }
 
-@media (min-width: 768px) {
-  .header {
-    .header__h1 {
-      font-size: 5rem;
-    }
-  }
-}
-
 // LIST COLUMNS
 .list {
   column-count: 1;
@@ -63,13 +64,13 @@
   }
 }
 
-// CHECKBOXES
-.checkbox {
+// RADIOS
+.radio {
   width: 100%;
-  .checkbox__input {
+  .radio__input {
     display: none;
   }
-  .checkbox__label {
+  .radio__label {
     background-color: $colorPrimary;
     border: 0.125rem solid $colorTertiary;
     border-radius: 0.25rem;
@@ -78,13 +79,8 @@
     padding: 0.1rem;
     text-align: center;
     width: 100%;
-    &:hover {
-      background-color: white;
-      color: $colorPrimary;
-      cursor: pointer;
-    }
   }
-  .checkbox__input:checked ~ .checkbox__label {
+  .radio__input:checked ~ .radio__label {
     background-color: white;
     border-color: $colorTertiary;
     color: $colorPrimary;
@@ -92,22 +88,27 @@
 }
 
 @media (min-width: 768px) {
-  .checkbox__label {
-    margin-bottom: 1rem;
+  .radio {
+    .radio__label {
+      margin-bottom: 1rem;
+    }
   }
 }
 
 // non-touchscreens
 @media (hover: hover) {
-  .checkbox__label {
-    &:hover {
-      background-color: white;
-      color: $colorPrimary;
-      cursor: pointer;
+  .radio {
+    .radio__label {
+      &:hover {
+        background-color: white;
+        color: $colorPrimary;
+        cursor: pointer;
+      }
     }
   }
 }
 
+// NAVIGATION (SETTINGS) BAR
 .navbar {
   height: 4rem;
   padding: 0;
@@ -133,6 +134,18 @@
     font-size: 0.75rem;
     .active {
       color: $colorSecondary;
+    }
+  }
+
+  // non-touchscreens
+  @media (hover: hover) {
+    .nav-link {
+      &:hover {
+        color: $colorTertiary;
+        .active {
+          color: $colorTertiary;
+        }
+      }
     }
   }
 }

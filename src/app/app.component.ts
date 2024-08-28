@@ -34,6 +34,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.generateQuiz();
+    // FOR TESTING ONLY
+    // Test country data (leave commented out)
+    // this.generateDataTest();
   }
 
   // Generate Quiz data
@@ -192,5 +195,40 @@ export class AppComponent implements OnInit {
         this.generateQuiz();
         break;
     }
+  }
+
+  // Generate data test
+  generateDataTest() {
+    // Get data
+    this.countriesService.getCountries().subscribe({
+      next: (data: ICountry[]) => {
+        // Reset question display
+        this.isDisplayQuestion = true;
+        // Get test country data
+        const group = this.countrySearch(data);
+        // Pick and set question and answer
+        this.questionCapital = group[0].capital;
+        this.questionFlag = group[0].flag;
+        this.questionId = group[0].cca2.toLowerCase();
+        this.answer = group[0].name.common;
+        // Sort group of countries for selection
+        const sortedGroup = this.sort(group);
+        // Set group of countries for selection
+        this.countries = sortedGroup;
+      },
+      error: (err) => (this.errorMessage = err),
+    });
+  }
+
+  // Search for country
+  countrySearch(data: ICountry[]): ICountry[] {
+    const country = 'Bonaire, Sint Eustatius and Saba';
+    const group: ICountry[] = [];
+    data.forEach((element) => {
+      if (element.name.common === country) {
+        group.push(element);
+      }
+    });
+    return group;
   }
 }

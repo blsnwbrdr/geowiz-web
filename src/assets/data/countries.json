@@ -4448,7 +4448,7 @@
   },
   {
     "name": {
-      "common": "Caribbean Netherlands",
+      "common": "Bonaire, Sint Eustatius and Saba",
       "official": "Bonaire, Sint Eustatius and Saba",
       "native": {
         "nld": {
@@ -4574,7 +4574,7 @@
     "landlocked": false,
     "borders": [],
     "area": 328,
-    "flag": "",
+    "flag": "\uD83C\uDDE7\uD83C\uDDF6",
     "demonyms": {
       "eng": {
         "f": "Dutch",
