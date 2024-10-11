@@ -50,10 +50,12 @@ export class AppComponent implements OnInit {
         const removeCapitals = this.capitalFilter(data);
         // Apply image filter
         const removeImages = this.imageFilter(removeCapitals);
-        // Randomize remaining data
-        const randomizedData = this.randomize(removeImages);
+        // Randomize remaining data - pass #1
+        const randomizedData1 = this.randomize(removeImages);
+        // Randomize remaining data - pass #2
+        const randomizedData2 = this.randomize(randomizedData1);
         // Get 10 countries
-        const group = this.group10(randomizedData);
+        const group = this.group10(randomizedData2);
         // Pick and set question and answer
         this.questionCapital = group[0].capital;
         this.questionFlag = group[0].flag;
