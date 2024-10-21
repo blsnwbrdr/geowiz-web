@@ -4,6 +4,7 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { DebugElement } from '@angular/core';
 
 // COMPONENTS
 import { AppComponent } from './app.component';
@@ -16,19 +17,21 @@ import { ICountry } from './interfaces/country.model';
 describe('AppComponent', () => {
   let app: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
+  let de: DebugElement;
+  let el: HTMLElement;
   let service: CountriesService;
 
-  const mockUsers: ICountry[] = [
+  const mockData: ICountry[] = [
     {
       name: {
-        common: 'string',
-        official: 'string',
+        common: 'common',
+        official: 'official',
         nativeName: {},
       },
-      cca2: 'string',
-      capital: [''],
+      cca2: 'cca2',
+      capital: ['capital'],
       latlng: [0],
-      flag: 'string',
+      flag: 'flag',
     },
   ];
 
@@ -46,6 +49,9 @@ describe('AppComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.componentInstance;
+    de = fixture.debugElement;
+    el = de.nativeElement;
+    app.countries = mockData;
     service = TestBed.inject(CountriesService);
 
     fixture.detectChanges();
@@ -73,45 +79,71 @@ describe('AppComponent', () => {
 
   describe('generateQuiz => countriesService', () => {
     it('should call "capitalFilter"', () => {
-      spyOn(service, 'getCountries').and.returnValue(of(mockUsers));
-      spyOn(app, 'capitalFilter').and.returnValue(mockUsers);
+      spyOn(service, 'getCountries').and.returnValue(of(mockData));
+      spyOn(app, 'capitalFilter').and.returnValue(mockData);
       app.generateQuiz();
       expect(app.capitalFilter).toHaveBeenCalled();
     });
 
     it('should call "imageFilter"', () => {
-      spyOn(service, 'getCountries').and.returnValue(of(mockUsers));
-      spyOn(app, 'imageFilter').and.returnValue(mockUsers);
+      spyOn(service, 'getCountries').and.returnValue(of(mockData));
+      spyOn(app, 'imageFilter').and.returnValue(mockData);
       app.generateQuiz();
       expect(app.imageFilter).toHaveBeenCalled();
     });
 
     it('should call "imageFilter"', () => {
-      spyOn(service, 'getCountries').and.returnValue(of(mockUsers));
-      spyOn(app, 'imageFilter').and.returnValue(mockUsers);
+      spyOn(service, 'getCountries').and.returnValue(of(mockData));
+      spyOn(app, 'imageFilter').and.returnValue(mockData);
       app.generateQuiz();
       expect(app.imageFilter).toHaveBeenCalled();
     });
 
     it('should call "randomize"', () => {
-      spyOn(service, 'getCountries').and.returnValue(of(mockUsers));
-      spyOn(app, 'randomize').and.returnValue(mockUsers);
+      spyOn(service, 'getCountries').and.returnValue(of(mockData));
+      spyOn(app, 'randomize').and.returnValue(mockData);
       app.generateQuiz();
       expect(app.randomize).toHaveBeenCalled();
     });
 
     it('should call "group10"', () => {
-      spyOn(service, 'getCountries').and.returnValue(of(mockUsers));
-      spyOn(app, 'group10').and.returnValue(mockUsers);
+      spyOn(service, 'getCountries').and.returnValue(of(mockData));
+      spyOn(app, 'group10').and.returnValue(mockData);
       app.generateQuiz();
       expect(app.group10).toHaveBeenCalled();
     });
 
     it('should call "sort"', () => {
-      spyOn(service, 'getCountries').and.returnValue(of(mockUsers));
-      spyOn(app, 'sort').and.returnValue(mockUsers);
+      spyOn(service, 'getCountries').and.returnValue(of(mockData));
+      spyOn(app, 'sort').and.returnValue(mockData);
       app.generateQuiz();
       expect(app.sort).toHaveBeenCalled();
+    });
+  });
+
+  describe('radio input', () => {
+    it('should call "onChange"', () => {
+      const inputEl = el.querySelector('input') as HTMLInputElement;
+      spyOn(app, 'onChange');
+      inputEl.dispatchEvent(new Event('change'));
+      expect(app.onChange).toHaveBeenCalled();
+    });
+  });
+
+  describe('button', () => {
+    it('should call "onToggle"', () => {
+      const buttonEl = el.querySelector('button') as HTMLButtonElement;
+      spyOn(app, 'onToggle');
+      buttonEl.dispatchEvent(new Event('click'));
+      expect(app.onToggle).toHaveBeenCalled();
+    });
+  });
+
+  describe('onToggle', () => {
+    it('should call "activeCheck"', () => {
+      spyOn(app, 'activeCheck');
+      app.onToggle('capital');
+      expect(app.activeCheck).toHaveBeenCalled();
     });
   });
 });
