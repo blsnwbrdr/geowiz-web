@@ -153,6 +153,13 @@ export class AppComponent implements OnInit {
         this.isOverlay = false;
         this.response = '';
       }, 1000);
+      // If Hardcore is active, redisplay question then hide question again
+      if (this.isActiveHardcore === true) {
+        this.isDisplayQuestion = true;
+        setTimeout(() => {
+          this.isDisplayQuestion = false;
+        }, 1250);
+      }
     }
   }
 
